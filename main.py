@@ -18,7 +18,9 @@ def open_tracking():
     length,length_u,length_d,length_l = -1,-1,-1,-1
     array_w_l , array_w_u = [] , []
     length_w_l,length_w_u=-1,-1
-
+    c , v  = pg.size()
+    g = c/1920 
+    i = v/1080 
     while True:
         _ , Frame = cap.read()
         Frame = cv2.flip(Frame , 1)
@@ -51,11 +53,11 @@ def open_tracking():
                                 array.append('R1')
                             if len(array) >= 2:
                                 if array[-1] == 'R1' and array[-2] == 'R2' and len(array) != length:
-                                    pg.click(124,632)
+                                    pg.click(g*124,i*632)
                                     length = len(array)
                                 if array[-1] == 'R2' and array[-2] == 'R1' and len(array) != length:
                                     print('Rightmost_layer_up')
-                                    pg.click(89,632)
+                                    pg.click(g*89,i*632)
                                     length = len(array)
                         elif  w/2 <= index_coord[0] <= 5*w/6 and h/2 <= index_coord[1] <= 5*h/6 and w/2 <= thumb_coord[0] <= 5*w/6 and h/6 <= thumb_coord[1] <= h/2:
                             if len(array) == 0:
@@ -64,12 +66,12 @@ def open_tracking():
                                 array.append('R2')
                             if len(array) >= 2:
                                 if array[-1] == 'R1' and array[-2] == 'R2' and len(array) != length:
-                                    pg.click(124,632)
+                                    pg.click(124*g,632*i)
                                     cv2.imshow('Video' ,Frame)
                                     length = len(array)
                                 if array[-1] == 'R2' and array[-2] == 'R1' and len(array) != length:
                                     print('Rightmost_layer_up')
-                                    pg.click(89,632)
+                                    pg.click(89*g,632*i)
                                     length = len(array)
                         elif thumb_coord[0] < w/2 or thumb_coord[0] > 5*w/6 or thumb_coord[1] < h/6 or thumb_coord[1] > 5*h/6 or index_coord[0] < w/2 or index_coord[0] > 5*w/6 or index_coord[1] < h/6 or index_coord[1] > 5*h/6:
                             array = []
@@ -84,11 +86,11 @@ def open_tracking():
                             if len(array_l) >= 2:
                                 if array_l[-1] == 'L1' and array_l[-2] == 'L2' and len(array_l) != length_l:
                                     print('Leftmost_layer_down')
-                                    pg.click(221,632)
+                                    pg.click(221*g,i*632)
                                     length_l = len(array_l)
                                 if array_l[-1] == 'L2' and array_l[-2] == 'L1' and len(array_l) != length_l:
                                     print('Leftmost_layer_up')
-                                    pg.click(252,632)
+                                    pg.click(252*g,632*i)
                                     length_l = len(array_l)
                         elif  w/6 <= index_coord[0] <= w/2 and h/2 <= index_coord[1] <= 5*h/6 and w/6 <= thumb_coord[0] <= w/2 and h/6 <= thumb_coord[1] <= h/2:
                             if len(array_l) == 0:
@@ -98,11 +100,11 @@ def open_tracking():
                             if len(array_l) >= 2:
                                 if array_l[-1] == 'L1' and array_l[-2] == 'L2' and len(array_l) != length_l:
                                     print('Leftmost_layer_down')
-                                    pg.click(221,632)
+                                    pg.click(221*g,632*i)
                                     length_l = len(array_l)
                                 if array_l[-1] == 'L2' and array_l[-2] == 'L1' and len(array_l) != length_l:
                                     print('Leftmost_layer_up')
-                                    pg.click(252,632)
+                                    pg.click(252*g,632*i)
                                     length_l= len(array_l)
                         elif thumb_coord[0] > w/2 or thumb_coord[0] < w/6  or thumb_coord[1] < h/6 or thumb_coord[1] > 5*h/6 or index_coord[0] > w/2 or index_coord[0] < w/6 or index_coord[1] < h/6 or index_coord[1] > 5*h/6:
                             array_l = []
@@ -117,11 +119,11 @@ def open_tracking():
                             if len(array_u) >= 2:
                                 if array_u[-1] == 'U1' and array_u[-2] == 'U2' and len(array_u) != length_u:
                                     print('Topmost_layer_right')
-                                    pg.click(323,632)
+                                    pg.click(323*g,632*i)
                                     length_u = len(array_u)
                                 if array_u[-1] == 'U2' and array_u[-2] == 'U1' and len(array_u) != length_u:
                                     print('Tompost_layer_left')
-                                    pg.click(291,632)
+                                    pg.click(291*g,632*i)
                                     length_u = len(array_u)
                         elif  w/2 <= index_coord[0] <= 5*w/6 and h/6 <= index_coord[1] <= h/2 and w/6 <= thumb_coord[0] <= w/2 and h/6 <= thumb_coord[1] <= h/2:
                             if len(array_u) == 0:
@@ -131,11 +133,11 @@ def open_tracking():
                             if len(array_u) >= 2:
                                 if array_u[-1] == 'U1' and array_u[-2] == 'U2' and len(array_u) != length_u:
                                     print('Topmost_layer_right')
-                                    pg.click(323,632)
+                                    pg.click(323*g,632*i)
                                     length_u= len(array_u)
                                 if array_u[-1] == 'U2' and array_u[-2] == 'U1' and len(array_u) != length_u:
                                     print('Topmost_layer_left')
-                                    pg.click(291,632)
+                                    pg.click(291*g,632*i)
                                     length_u = len(array_u)
                         elif thumb_coord[0] > 5*w/6 or thumb_coord[0] < w/6  or thumb_coord[1] < h/6 or thumb_coord[1] > h/2 or index_coord[0] > 5*w/6 or index_coord[0] < w/6 or index_coord[1] < h/6 or index_coord[1] > h/2:
                             array_u = []
@@ -148,11 +150,11 @@ def open_tracking():
                             if len(array_d) >= 2:
                                 if array_d[-1] == 'L1' and array_d[-2] == 'R1' and len(array_d) != length_d:
                                     print('Bottommost_layer_left')
-                                    pg.click(387,632)
+                                    pg.click(387*g,632*i)
                                     length_d = len(array_d)
                                 if array_d[-1] == 'R1' and array_d[-2] == 'L1' and len(array_d) != length_d:
                                     print('Bottommost_layer_right')
-                                    pg.click(360,632)
+                                    pg.click(360*g,i*632)
                                     length_d = len(array_d)
                         elif  w/6 <= index_coord[0] <= w/2 and h/2 <= index_coord[1] <= 5*h/6 and w/2 <= thumb_coord[0] <= 5*w/6 and h/2 <= thumb_coord[1] <= 5*h/6:
                             if len(array_d) == 0:
@@ -162,11 +164,11 @@ def open_tracking():
                             if len(array_d) >= 2:
                                 if array_d[-1] == 'L1' and array_d[-2] == 'R1' and len(array_d) != length_d:
                                     print('Bottommost_layer_left')
-                                    pg.click(387,632)
+                                    pg.click(387*g,i*632)
                                     length_d = len(array_d)
                                 if array_d[-1] == 'R1' and array_d[-2] == 'L1' and len(array_d) != length_d:
                                     print('Bottommost_layer_right')
-                                    pg.click(360,632)
+                                    pg.click(360*g,i*632)
                                     length_d = len(array_d)
                         elif thumb_coord[0] > 5*w/6 or thumb_coord[0] < w/6  or thumb_coord[1] < h/6 or thumb_coord[1] > h/2 or index_coord[0] > 5*w/6 or index_coord[0] < w/6 or index_coord[1] < h/6 or index_coord[1] > h/2:
                             array_d = []
