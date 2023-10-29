@@ -4,6 +4,10 @@ Are you ready to play with the Rubik's cube?
 Immerse yourself in a completely new experience, with a Simulated Virtual cube and Motion tracking, and solve the cube in shortest time.
 
 It's not a Rubik's cube. It's an Air Cube!!
+"""
+Run the main.py to run the game
+The web browser that opens on running the code should be put exactly on the left half of the screen for the code to work. The video displayed should be put on the right half. Only then will the commands function properly
+"""
 
 OBJECTIVES OF THE GAME
 
